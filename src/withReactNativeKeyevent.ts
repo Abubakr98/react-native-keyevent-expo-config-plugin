@@ -99,6 +99,14 @@ const withAndroidMainActivityBody: ConfigPlugin = (config) => {
   // @ts-ignore
   const newConfig = withMainActivity(config, (config) => {
     const newSrc = [
+      'override fun dispatchKeyEvent(event: KeyEvent): Boolean {',
+      '   if ((event.keyCode == KeyEvent.KEYCODE_ENTER || event.keyCode == KeyEvent.KEYCODE_DPAD_CENTER) && event.action == KeyEvent.ACTION_DOWN) {',
+      '       KeyEventModule.getInstance().onKeyDownEvent(event.keyCode, event)',
+      '       return false',
+      '   }',
+      '   return super.dispatchKeyEvent(event)',
+      '}',
+      '',
       'override fun onKeyDown(keyCode: Int, event: KeyEvent): Boolean {',
       '   // // Uncomment this if key events should only trigger once when key is held down',
       '  // if (event.getRepeatCount() == 0) {',
