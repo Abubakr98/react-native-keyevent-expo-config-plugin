@@ -103,7 +103,7 @@ const withAndroidMainActivityBody: ConfigPlugin = (config) => {
       '   if ((event.keyCode == KeyEvent.KEYCODE_ENTER || event.keyCode == KeyEvent.KEYCODE_DPAD_CENTER) && event.action == KeyEvent.ACTION_DOWN) {',
       '       KeyEventModule.getInstance().onKeyDownEvent(event.keyCode, event)',
       '   }',
-      '   return super.dispatchKeyEvent(event)',
+      '   super.dispatchKeyEvent(event)',
       '   return true',
       '}',
       '',
